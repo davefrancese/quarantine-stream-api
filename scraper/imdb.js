@@ -35,13 +35,42 @@ const getMovie = async imdbID => {
     .text()
     .trim();
 
-  const $type = $(".subtext a:nth-child(6)")
+  const $type = $(".subtext a:nth-last-child(1)")
     .text()
     .trim();
+  const $genre = $(".subtext a:not(:nth-last-child(1))")
+    .text()
+    .trim();
+  const $director_creator = $(
+    ".plot_summary .credit_summary_item:nth-child(2) a"
+  )
+    .text()
+    .trim();
+  const $rating = $(".ratingValue")
+    .text()
+    .trim();
+  const $summary = $(".summary_text")
+    .text()
+    .trim();
+  const $stars = $(
+    ".plot_summary .credit_summary_item:nth-last-child(1) a:not(:nth-last-child(1))"
+  )
+    .text()
+    .trim();
+  const $posterURL = $(".poster img").attr("src");
 
   return {
     title: $title,
-    type: $type
+    type: $type,
+    genre: $genre,
+    director_creator: $director_creator,
+    network: "",
+    streamNetwork: "",
+    rating: $rating,
+    summary: $summary,
+    stars: $stars,
+    posterURL: $posterURL,
+    trailerURL: ""
   };
 };
 
