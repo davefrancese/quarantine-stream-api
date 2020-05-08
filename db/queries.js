@@ -29,10 +29,36 @@ const deleteMovie = id => {
     .returning("*");
 };
 
+// director
+
+const postDirector = newDirector => {
+  return db("director")
+    .insert(newDirector)
+    .returning("*");
+};
+
+// genre
+const postGenre = async newGenre => {
+  console.log(newGenre);
+  return await db("genre").insert(newGenre);
+  // const [name] = await db("genre")
+  //   .where("name", newGenre)
+  //   .returning("name");
+  // if (name === undefined) {
+  //   return db("genre")
+  //     .insert(newGenre)
+  //     .returning("*");
+  // } else {
+  //   return "Already Exists";
+  // }
+};
+
 module.exports = {
   updateMovie,
   getAllMovies,
   getMovieById,
   postMovie,
-  deleteMovie
+  deleteMovie,
+  postDirector,
+  postGenre
 };
