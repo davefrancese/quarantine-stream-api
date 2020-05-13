@@ -25,20 +25,7 @@ module.exports = app => {
   });
 
   app.post("/postmovie", async (req, res) => {
-    // const postMovie = await query.postMovie(req.body.newMovie);
-    // const postDirector = await query.postDirector(req.body.newDirector);
-    const genreArray = req.body.newGenre.name;
-    console.log("genreArray=", genreArray);
-
-    for (let i = 0; i < genreArray.length; i++) {
-      try {
-        var postGenre = await query.postGenre(genreArray[i]);
-      } catch (err) {
-        console.log(err);
-      }
-
-      console.log("postGenre=", postGenre);
-    }
-    res.send(postGenre);
+    const postMovie = await query.postMovie(req.body);
+    res.send(postMovie);
   });
 };

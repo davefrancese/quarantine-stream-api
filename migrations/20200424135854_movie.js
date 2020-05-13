@@ -5,6 +5,8 @@ exports.up = function(knex) {
       table.string("title");
       table.string("type"); // series or film
       table.string("network");
+      table.string("director");
+      table.string("genre");
       table.string("streamNetwork");
       table.string("rating");
       table.text("summary");
